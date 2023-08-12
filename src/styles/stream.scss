@@ -1,0 +1,36 @@
+$red: rgb(233, 55, 55);
+$red50: rgba(233, 55, 55, .5);
+
+.stream {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .MuiCard-root {
+    display: flex;
+    flex-direction: column;
+  }
+  .MuiButtonBase-root {
+    margin: 10px;
+    color: $red;
+    border-color: $red;
+    &:hover {
+      border-color: $red50;
+    }
+  }
+}
+
+.stream-header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $red;
+  padding: 10px 0;
+}
+
+.stream-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid $red;
+}
