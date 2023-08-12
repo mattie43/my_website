@@ -13,7 +13,7 @@ export const Sidebar = () => {
   return (
     <>
       <div className="sidebar">
-        <Home className={path === "/home" ? "active" : ""} fontSize="large" onClick={() => handleClick("home")} />
+        <Home className={path === "/" ? "active" : ""} fontSize="large" onClick={() => handleClick("")} />
         <Newspaper className={path === "/stream" ? "active" : ""} fontSize="large" onClick={() => handleClick("stream")} />
       </div>
       <Outlet />

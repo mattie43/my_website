@@ -1,5 +1,9 @@
 $red: rgb(233, 55, 55);
 $red50: rgba(233, 55, 55, .5);
+$green: rgb(54, 156, 29);
+$grey: rgb(129, 129, 129);
+$ghost: rgb(235, 235, 235);
+$blue: rgb(70, 130, 180);
 
 .stream {
   display: flex;
@@ -9,6 +13,7 @@ $red50: rgba(233, 55, 55, .5);
   .MuiCard-root {
     display: flex;
     flex-direction: column;
+    background-color: $ghost;
   }
   .MuiButtonBase-root {
     margin: 10px;
@@ -31,6 +36,46 @@ $red50: rgba(233, 55, 55, .5);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  .loading-more {
+    padding: 8px;
+    
+  }
+}
+
+.stream-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   border-bottom: 1px solid $red;
+  width: 100%;
+  padding: 10px;
+  .card-header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    .header-name {
+      font-size: 20px;
+      color: $blue;
+    }
+    .header-location {
+      font-size: 12px;
+    }
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    .body-title {
+      font-size: 16px;
+      color: $green;
+    }
+    .body-contact {
+      font-size: 12px;
+    }
+  }
 }

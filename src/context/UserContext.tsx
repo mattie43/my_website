@@ -1,16 +1,27 @@
 import { createContext } from 'react';
-import { useUsers } from '~/hooks/useUsers';
+import { useInfiniteQuery } from '@tanstack/react-query'
+
+const fetchUsers = async ({ pageParam = 0 }) => {
+  const pageSize = 10;
+  const url = `https://random-data-api.com/api/v2/users?size=${pageSize}&page=${pageParam}`;
+  const resp = await fetch(url);
+  return resp.json();
+}
+
+const nextPageParam = (_lastPage: any, pages: any) => {
+  return pages + 1;
+}
 
 export const UserContext = createContext<any>(null);
 
 export const UserProvider = ({ children }: any) => {
-  const { data, isLoading, error, fetchMore } = useUsers();
+  const { data, error, isLoading, fetchNextPage } = useInfiniteQuery({ queryKey: ["users"], queryFn: fetchUsers, getNextPageParam: nextPageParam });
 
   const values: any = {
-    data,
+    data: data?.pages.flat(),
     isLoading,
     error,
-    fetchMore
+    fetchNextPage
   };
 
   return (
