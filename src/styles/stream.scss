@@ -36,12 +36,15 @@ $blue: rgb(70, 130, 180);
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 400px;
+  height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
   .loading-more {
-    padding: 8px;
-    
+    div {
+      display: flex;
+      align-items: center;
+      height: 92px;
+    }
   }
 }
 

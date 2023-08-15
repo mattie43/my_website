@@ -9,19 +9,22 @@ const fetchUsers = async ({ pageParam = 0 }) => {
 }
 
 const nextPageParam = (_lastPage: any, pages: any) => {
+  // Simulate max 5 pages.
+  if (pages.length > 4) return undefined;
   return pages + 1;
 }
 
 export const UserContext = createContext<any>(null);
 
 export const UserProvider = ({ children }: any) => {
-  const { data, error, isLoading, fetchNextPage } = useInfiniteQuery({ queryKey: ["users"], queryFn: fetchUsers, getNextPageParam: nextPageParam });
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery({ queryKey: ["users"], queryFn: fetchUsers, getNextPageParam: nextPageParam });
 
   const values: any = {
     data: data?.pages.flat(),
     isLoading,
     error,
-    fetchNextPage
+    fetchNextPage,
+    hasNextPage
   };
 
   return (
